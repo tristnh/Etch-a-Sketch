@@ -1,4 +1,7 @@
 const containerdiv = document.querySelector('.container');
+const slider = document.getElementById('sizeselect');
+const slidervalue = document.querySelector('.slidervalue');
+let gridsize = 16;
 
 function makeGrid(size){
     if(size>100){
@@ -14,10 +17,25 @@ function makeGrid(size){
     }
 }
 
+function getSize(){
+    gridsize = slider.value;
+}
 
+function clearGrid(){
+    containerdiv.textContent = '';
+}
+
+//checks to see if item clicked on is a square on the grid then colors it
 document.addEventListener('click', (e)=>{
-    //checks to see if item clicked on is a square on the grid then colors it
     if(e.target.classList.contains('grid-item')){
         e.target.style.backgroundColor = '#ff0000';
     }
-})
+});
+
+//allows the usesr to use slider to change grid sizes
+slider.addEventListener('input', () => {
+    getSize();
+    clearGrid();
+    makeGrid(gridsize);
+    slidervalue.textContent = `${gridsize} X ${gridsize}`;
+});
