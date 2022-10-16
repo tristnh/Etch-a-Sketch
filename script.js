@@ -2,6 +2,7 @@ const containerdiv = document.querySelector('.container');
 const slider = document.getElementById('sizeselect');
 const slidervalue = document.querySelector('.slidervalue');
 const clearbutton = document.querySelector('.clear');
+const colorpicker = document.getElementById('colorpicker');
 let gridsize = 50;
 
 function makeGrid(size){
@@ -34,7 +35,7 @@ slidervalue.textContent = `${gridsize} X ${gridsize}`;
 //checks to see if item clicked on is a square on the grid then colors it
 document.addEventListener('click', (e)=>{
     if(e.target.classList.contains('grid-item')){
-        e.target.style.backgroundColor = '#ff0000';
+        e.target.style.backgroundColor = `${colorpicker.value}`;
     }
 });
 
